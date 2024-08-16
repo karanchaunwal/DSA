@@ -3,19 +3,22 @@ package assignments;
 // import java.util.Arrays;
 
 public class Assignment16 {
+
     public void driver(){
         
         int arr []=new int[]{3,8,20,4,11,1,2};
 
         Sort sortObj=new Sort();
 
+        System.out.print("[Original Array]\n");
         sortObj.printArr(arr);
-        // sortObj.bubbleSort(arr);
-        // sortObj.modifiedBubbleSort(arr);
-       // sortObj.selectionSort(arr);
-       sortObj.insertionSort(arr);
 
-        System.out.println("\nAfter Sorting ");
+        // sortObj.bubbleSort(arr);
+         sortObj.modifiedBubbleSort(arr);
+       // sortObj.selectionSort(arr);
+       //sortObj.insertionSort(arr);
+
+        System.out.println("[After Sorting]");
         sortObj.printArr(arr);
 
     }
@@ -25,7 +28,8 @@ public class Assignment16 {
 class Sort{  //Or pre-defined func
             // Arrays.sort(arr);
 
-        public void printArr(int arr[]){
+    public void printArr(int arr[]){
+
         System.out.print("Arr: [ ");
         for (int i=0;i<arr.length;i++){
             System.out.print(arr[i]);
@@ -33,32 +37,45 @@ class Sort{  //Or pre-defined func
                 System.out.print(", ");
             }
         }
-        System.out.print(" ] ");
+        System.out.print(" ] \n");
     }
 
 
     public void bubbleSort(int arr[]){
  
-        System.out.println("\n\n[Using Bubble Sort]");
-        for(int j=0;j<arr.length;j++){ 
+        System.out.println("\n\n---Using Bubble Sort---");
+        // for(int j=0;j<arr.length;j++){ //for no. of rounds
 
-            for (int i=0;i<arr.length-1-j;i++){ //for swapping
+        //     for (int i=0;i<arr.length-1-j;i++){ //for swapping
                 
-                if(arr[i]>arr[i+1]){
-                    int temp=arr[i];
-                    arr[i]=arr[i+1];
-                    arr[i+1]=temp;
-                }
+        //         if(arr[i]>arr[i+1]){
+        //             int temp=arr[i];
+        //             arr[i]=arr[i+1];
+        //             arr[i+1]=temp;
+        //         }
             
-            }
+        //     }
                
+        // }
+
+        for(int round=0;round<arr.length;round++){//for no. of rounds
+            for(int index=0;index<arr.length-1-round;index++){//for swapping
+                if (arr[index]>arr[index+1]) {
+                    //now swap
+                    int temp;
+                    temp=arr[index];
+                    arr[index]=arr[index+1];
+                    arr[index+1]=temp;
+                }
+            }
         }
-        
+    
     }
+
 
     public void modifiedBubbleSort(int arr[]){
 
-        System.out.println("\n\n[Using Modified Bubble Sort]");
+        System.out.println("\n\n---Using Modified Bubble Sort---");
         for(int j=0;j<arr.length;j++){ 
 
             int flag=0;//for modifying bubble sort
@@ -71,9 +88,9 @@ class Sort{  //Or pre-defined func
                     flag=1;
                 }
             }
-                if(flag==0){
+                if(flag==0)
                     break;
-            }
+            
         }     
     }
 
